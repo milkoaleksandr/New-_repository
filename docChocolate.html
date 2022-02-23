@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Задача про шоколадку</title>
+</head>
+<body>
+    <script>
+        //* пользователь вводит сумму
+        let userMoney = prompt("Введите сумму денег, которую Вы хотите потратить на шоколад)")
+        //* пользователь вводит цену на шоколад
+        let priceChoc = prompt("Введите желаемую цену за одну плитку шоколада")
+        //* вычисляем количество плиток шоколада которое может купить пользователь
+        let userChoc = userMoney / priceChoc
+        //* определяем сколько денег останется у пользователя
+        let lastMoney = userMoney - (priceChoc * Math.round(userChoc))
+        alert("На ваши средства Вы можете купить "+Math.round(userChoc)+" плиток шоколада и у Вас останется "+lastMoney+" гривен сдачи")
+    </script>
+</body>
+</html>
