@@ -17,16 +17,55 @@
 <body>
     <h4>Введите тип номера телефона</h4>
     <div class="content">
-        <input type="text" id="lifeUser" value="+38 063">
-        <input type="button" value="Добавить">
-        <input type="text" id="kyivUser" value="+38 097">
-        <input type="button" value="Добавить">
-        <input type="text" id="vodaUser" value="+38 050">
-        <input type="button" value="Добавить">
+        <label for="lifeUser">Мобильный телефон</label> <input type="text" id="lifeUser" value="+380">
+        <input type="button" id="btnAdd" value="Добавить">
+        <br>
+        <label for="lifeUser">Домашний телефон</label> <input type="text" id="homePhone">
+        <input type="button" id="btnAddHome" value="Добавить">
     </div>
     <ul id="lstNum"></ul>
 
 <script>
+    /*массив для контактов, здесь они будут находиться*/
+    let contacts = []
+    let lstContacts = document.getElementById("lstNum")
+
+    function renderContacts () {
+        lstContacts.innerHTML = ""
+        for ( let i = 0; i < contacts.length; i++){
+            let li = document.createElement("li")
+
+            let spanPhone = document.createElement("span")
+            spanPhone.innerText = contacts[i].phone
+            spanPhone.className = "contactPhone"
+
+            li.appendChild(spanPhone)
+
+            lstContacts.appendChild(li)
+        }
+    }
+    renderContacts()
+
+    /*создаем новый контакт на основе данных пользователя*/
+    document.getElementById("btnAdd").onclick = function () {
+        contacts.push(
+            {
+                phone: document.getElementById("lifeUser").value
+            }
+        )
+        renderContacts()
+    }
+
+    document.getElementById("btnAddHome").onclick = function () {
+        contacts.push(
+            {
+                phone: document.getElementById("homePhone").value
+            }
+        )
+        renderContacts()
+    }
+
+
 
 
 
